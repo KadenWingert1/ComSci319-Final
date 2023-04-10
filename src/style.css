@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+/*Main background color*/
+body {
+  background-color: burlywood;
+}
+/*Items in the cart should display more than one on the same line*/
+.cartItems {
+  display: flex;
+}
+/*Styles the view More button*/
+.viewMore {
+  display: inline-block;
+  padding: 0em .25em;
+  border: 0.1em solid #ffffff;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: rgb(176, 136, 83);
+  text-align: center;
+  transition: all 0.2s;
+}
+.viewMore:hover {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+/*Sizes the checkout button image*/
+.checkout {
+  width: 4rem;
+  margin-right: 10rem;
+}
+.checkout:hover,
+.back:hover {
+  cursor: pointer;
+}
+/*Sizes the Back button image*/
+.back {
+  width: 5rem;
+  margin-right: 10rem;
+}
+
+/*Container for Products(#) and checkout button image*/
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+/*Sizes the checkout button image*/
+
+/*Add/subtract and filter buttons*/
+.inline-block.bg-amber-600.rounded-full.px-3.py-1.text-sm.font-semibold.text-gray-700.mr-2.mt-2 {
+  background-color: rgb(176, 136, 83);
+  width: 70%;
+}
+.viewCart {
+  font-size: 2rem;
+  font-weight: 700;
+}
+/*Add/sub button's */
+.addsub {
+  background-color: rgb(176, 136, 83);
+  font-size: 0.75em;
+  font-weight: bold;
+  max-height: 4em;
+  max-width: 4rem;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  text-align: center;
+  line-height: 1.1em;
+}
+.addsubContainer {
+  display: flex;
+}
+
+.grid.grid-cols-1.md:grid-cols-2.xl:grid-cols-3.gap-4 {
+  overflow-y: scroll;
+}
+
+/*Background of the left side/navigation panel*/
+.h-screen.bg-slate-800.p-3 {
+  background-color: rgb(176, 136, 83);
+}
+/*Usde in the background of the product images*/
+.w-full {
+  background-color: burlywood;
+}
+.text-white {
+  font-size: 2em;
+}
+/*Makes the spacing tighter on the left hand side*/
+.py-10 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+/*Shrinks the image size a bit*/
+.w-full {
+  width: 80%;
+}
+/*Used for Filter by product and Browse Products*/
+.text-3xl.mb-2.font-bold.text-white {
+  color: rgb(220, 221, 255);
+  font-size: 3em;
+}
+/*Names of authors*/
+.text-gray-700.text-white {
+  font-size: 1em;
+}
+/*Background of images*/
+.category-section.fixed {
+  background-color: burlywood;
+}
