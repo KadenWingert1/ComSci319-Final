@@ -5,9 +5,8 @@ import logo from "./images/logo.png";
 import React, { useState } from "react";
 //import { useEffect } from "react";
 import { Products } from "./Products";
-import { specificProducts } from "./specificProducts";
 import { Categories } from "./Categories";
-import Cart from "./cart";
+import Cart, { viewMode, setViewMode, confimation, setConfirmation } from "./cart";
 
 export const App = (confimation) => {
   console.log("Step 1: After reading file :");
@@ -106,15 +105,6 @@ export const App = (confimation) => {
                       {product.rating.rate}
                     </p>
                     <div className="addsubContainer">
-                      {<button className="viewMore"
-                      onClick={() => {
-                        setIsCartVisible(false);
-
-                      }}
-                      >
-                        View More
-                        </button>}
-
                       <button
                         className="inline-block bg-amber-600 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2 addsub"
                         onClick={() => {
@@ -170,13 +160,13 @@ export const App = (confimation) => {
   };
 
   return (
-    <div className="flex min-h-screen flex-row">
+    <div className="flex min-h-screen flex-row" style = {{height: "56em"}}>
       {console.log(
         "Step 2 : Return App :",
         Products.length,
         ProductsCategory.length
       )}
-      <div className="h-screen bg-slate-800 p-3 xl:basis-1/5">
+      <div className="h-screen bg-slate-800 p-3 xl:basis-1/5" style = {{height: "100%"}} >
         <img className="w-full" src={logo} alt="Nordland Forge" />
         <div className="px-6 py-4">
           <h1 className="text-3xl mb-2 font-bold text-white">

@@ -1,7 +1,7 @@
 export const specificProducts = [
   {
     id: 1,
-    title: "600 Layer Twist Damascus Hunter",
+    title: "Damascus Hunter",
     price: 540,
     description: "1095/15n20   Elm/Resin Hybrid   Brass Pins",
     category: "Blades",
@@ -145,5 +145,4 @@ export const specificProducts = [
     rating: { rate: 5.0, count: 3 },
   },
 
-  
 ];
