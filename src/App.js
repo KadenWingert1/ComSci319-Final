@@ -8,17 +8,18 @@ import { Products } from "./Products";
 import { Categories } from "./Categories";
 import Cart from "./cart";
 import About from "./About";
+import Credits from "./Credits";
 
 export const App = (confimation) => {
   console.log("Step 1: After reading file :");
-  const [ProductsCategory, setProductsCategory] = useState(Products);
-  const [query, setQuery] = useState("");
+  const [ProductsCategory, setProductsCategory] = useState(Products); //Json file conataing all the information about the products
+  const [query, setQuery] = useState(""); //Used for the search bar
   const [cart, setCart] = useState(Array(ProductsCategory.length).fill(0)); //Creates an array with the number of categories all filled with 0
-  const [isCartVisible, setIsCartVisible] = useState(false);
-  const [isCardsVisible, setIsCardsVisible] = useState(true);
-  const [showCategories, setShowCategories] = useState("true");
-  const [showAbout, setShowAbout] = useState(false);
-  
+  const [isCartVisible, setIsCartVisible] = useState(false); //Items that have been added to your cart
+  const [isCardsVisible, setIsCardsVisible] = useState(true); //Initial cards that appear on the screen
+  const [showCategories, setShowCategories] = useState("true"); //Filter buttons on the side of the screen
+  const [showAbout, setShowAbout] = useState(false); //About page
+  const [showCredits, setShowCredits] = useState(false); //Credits page
 
   const render_products = (ProductsCategory) => {
     return (
@@ -27,20 +28,20 @@ export const App = (confimation) => {
         className="category-section"
         style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
       >
-                <About
-          isCartVisible={isCartVisible}
+        <About
           setIsCartVisible={setIsCartVisible}
-          cart={cart}
-          setCart={setCart}
-          isCardsVisible={isCardsVisible}
           setIsCardsVisible={setIsCardsVisible}
-          ProductsCategory={ProductsCategory}
-          setProductsCategory={setProductsCategory}
-          showCategories={showCategories}
           setShowCategories={setShowCategories}
-          showAbout = {showAbout}
-          setShowAbout = {setShowAbout}
+          showAbout={showAbout}
+          setShowAbout={setShowAbout}
         />
+        {/* <Credits
+          setIsCartVisible={setIsCartVisible}
+          setIsCardsVisible={setIsCardsVisible}
+          setShowCategories={setShowCategories}
+          showCredits={setShowCredits}
+          setShowCredits={setShowCredits}
+        /> */}
         {console.log("Step 3 : in render_products ")}
         <div className="container">
           {showCategories == "true" && (
@@ -62,18 +63,10 @@ export const App = (confimation) => {
             }}
           >
             {showCategories == "true" && (
-              <img
-                alt="Checkout"
-                src={require("./images/checkout.png")}
-                className="checkout"
-              />
+              <button className="checkoutButton">Checkout</button>
             )}
             {showCategories == "back" && (
-              <img
-                alt="Back"
-                src={require("./images/back.png")}
-                className="back"
-              />
+              <button className="checkoutButton">Back</button>
             )}
             {showCategories == "confirmation" && ""}
           </div>
@@ -90,9 +83,7 @@ export const App = (confimation) => {
           showCategories={showCategories}
           setShowCategories={setShowCategories}
         />
-        <div
-          className="m-6 p-3 mt-10 ml-0 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-6 xl:gap-x-10 products-section"
-        >
+        <div className="m-6 p-3 mt-10 ml-0 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-6 xl:gap-x-10 products-section">
           {/* Loop Products */}
           {isCardsVisible &&
             ProductsCategory.map((product, index) => (
@@ -274,15 +265,32 @@ export const App = (confimation) => {
               <a href="#top">Back to top</a>
             </div>
             <div className="about link">
-              <a href="about.html" onClick={(event) => {
-                event.preventDefault(); 
-                setShowAbout(true);
-                setIsCardsVisible(false);
-                setShowCategories(false);
-                }}>About Us</a>
+              <a
+                href="about.html"
+                onClick={(event) => {
+                  event.preventDefault();
+                  setShowAbout(true);
+                  setIsCardsVisible(false);
+                  setShowCategories(false);
+                  setIsCartVisible(false);
+                }}
+              >
+                About Us
+              </a>
             </div>
             <div className="credits link">
-              <a href="credits.html">Credits</a>
+              <a
+                href="About.html"
+                onClick={(event) => {
+                  event.preventDefault();
+                  setShowCredits(true);
+                  setIsCardsVisible(false);
+                  setShowCategories(false);
+                  setIsCartVisible(false);
+                }}
+              >
+                Credits
+              </a>
             </div>
             <div className="email link">
               <a href="mailto:carvergfit@gmail.com">
