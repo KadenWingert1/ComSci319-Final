@@ -84,7 +84,7 @@ body {
 /*Sizes the checkout button image*/
 
 /*Add/subtract and filter buttons*/
-.button.inline-block.bg-amber-600.rounded-full.px-3.py-1.text-sm.font-semibold.text-gray-700.mr-2.mt-2
+.inline-block.bg-amber-600.rounded-full.px-3.py-1.text-sm.font-semibold.text-gray-700.mr-2.mt-2
   {
   background-color: rgb(176, 136, 83);
   width: 70%;

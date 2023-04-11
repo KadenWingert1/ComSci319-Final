@@ -11,7 +11,6 @@ import About from "./About";
 import Credits from "./Credits";
 import Footer from "./Footer";
 
-
 export const App = (confimation) => {
   console.log("Step 1: After reading file :");
   const [ProductsCategory, setProductsCategory] = useState(Products); //Json file conataing all the information about the products
@@ -249,17 +248,17 @@ export const App = (confimation) => {
         )}
         {render_products(ProductsCategory)}
       </div>
-      {showFooter && (
-          <Footer
-            setIsCartVisible={setIsCartVisible}
-            setIsCardsVisible={setIsCardsVisible}
-            setShowCategories={setShowCategories}
-            setShowAbout = {setShowAbout}
-            setShowCredits = {setShowCredits}
-            showFooter = {showFooter}
-            setShowFooter = {setShowFooter}
-          />
-        )}
+      {
+        <Footer
+          setIsCartVisible={setIsCartVisible}
+          setIsCardsVisible={setIsCardsVisible}
+          setShowCategories={setShowCategories}
+          setShowAbout={setShowAbout}
+          setShowCredits={setShowCredits}
+          showFooter={showFooter}
+          setShowFooter={setShowFooter}
+        />
+      }
     </div>
   );
 }; //end App
