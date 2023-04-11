@@ -1,110 +1,190 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 /*Main background color*/
-body{
-  background-color:burlywood
+body {
+  background-color: burlywood;
 }
 /*Items in the cart should display more than one on the same line*/
-.cartItems{
+.cartItems {
   display: flex;
 }
 /*Sizes the checkout button image*/
-.checkout{
-width: 4rem;
-margin-right: 10rem;
+.checkout {
+  width: 4rem;
+  margin-right: 10rem;
 }
-.checkout:hover, .back:hover{
-cursor: pointer;
+.checkout:hover,
+.back:hover {
+  cursor: pointer;
 }
 /*Sizes the Back button image*/
-.back{
-width: 5rem;
-margin-right: 10rem;
+.back {
+  width: 5rem;
+  margin-right: 10rem;
 }
 
 /*Container for Products(#) and checkout button image*/
-.container{
+.container {
   display: flex;
   justify-content: space-between;
 }
 /*Sizes the checkout button image*/
 
 /*Add/subtract and filter buttons*/
-.inline-block.bg-amber-600.rounded-full.px-3.py-1.text-sm.font-semibold.text-gray-700.mr-2.mt-2{
-background-color: rgb(176, 136, 83);
-width: 70%;
+.inline-block.bg-amber-600.rounded-full.px-3.py-1.text-sm.font-semibold.text-gray-700.mr-2.mt-2 {
+  background-color: rgb(176, 136, 83);
+  width: 70%;
 }
-.viewCart{
+
+/* These are for the footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 10vh;
+  text-align: center;
+  padding-top: 15px;
+  background-color: burlywood;
+  transform: translateY(0);
+  border-top: 2px solid black;
+
+}
+.footer.hidden {
+  transform: translateY(100%);
+}
+.foot {
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding-top: 0px;
+}
+.flex-container{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  }
+.link{
+  background-color: bisque;
+  padding: .75em;
+  border-radius: 30%;
+  transition: transform 0.5s ease-in-out;
+}
+.link:hover {
+  transform: translateY(-20px);
+  transition: transform 0.3s ease-in;
+}
+.link:not(:hover) {
+  transform: translateY(0);
+}
+/*Last rule for footer*/
+
+
+
+
+/*Used in the about page*/
+.p1container{
+  display: flexbox;
+}
+.p2container{
+  display: flexbox;
+}
+.p3container{
+  display: flexbox;
+}
+figure{
+  float: right;
+  width: 20%;
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+  border: thin silver solid;
+  margin: 0.25em;
+  padding: 0.25em;
+}
+#aboutP{
+flex-wrap: wrap;
+}
+.motto {
+  font-family: "Anton", sans-serif;
+  padding: 0.75em;
+  margin-bottom: 0px;
+}
+#aboutLastParagraph {
+  padding-bottom: 1em;
+}
+/*Last rules for about page*/
+
+
+
+.viewCart {
   font-size: 2rem;
   font-weight: 700;
 }
 /*Add/sub button's */
-.addsub{
+.addsub {
   background-color: rgb(176, 136, 83);
-  font-size: .75em;
+  font-size: 0.75em;
   font-weight: bold;
   max-height: 4em;
   max-width: 4rem;
   margin-right: 0px;
   padding-left: 0px;
   padding-right: 0px;
-  text-align:center;
-  line-height:1.1em;
-  }
-  .addsubContainer{
-    display: flex;
-  }
+  text-align: center;
+  line-height: 1.1em;
+}
+.addsubContainer {
+  display: flex;
+}
 
-  .grid.grid-cols-1.md:grid-cols-2.xl:grid-cols-3.gap-4{
-    overflow-y: scroll;
-  }
-
+.grid.grid-cols-1.md:grid-cols-2.xl:grid-cols-3.gap-4 {
+  overflow-y: scroll;
+}
 
 /*Background of the left side/navigation panel*/
-.h-screen.bg-slate-800.p-3{
-  background-color:rgb(176, 136, 83);
+.h-screen.bg-slate-800.p-3 {
+  background-color: rgb(176, 136, 83);
 }
 /*Usde in the background of the product images*/
-.w-full{ 
+.w-full {
   background-color: burlywood;
+  width: 80%;
 }
-.text-white{
-font-size: 2em;
+.text-white {
+  font-size: 2em;
 }
 /*Makes the spacing tighter on the left hand side*/
-.py-10{
+.py-10 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
 }
-/*Shrinks the image size a bit*/
-.w-full{
-  width: 80%;
-}
+
 /*Used for Filter by product and Browse Products*/
-.text-3xl.mb-2.font-bold.text-white{
-  color:rgb(220, 221, 255);
+.text-3xl.mb-2.font-bold.text-white {
+  color: rgb(220, 221, 255);
   font-size: 3em;
 }
 /*Names of authors*/
-.text-gray-700.text-white{ 
+.text-gray-700.text-white {
   font-size: 1em;
 }
 /*Background of images*/
 .category-section.fixed {
-  background-color:burlywood;
+  background-color: burlywood;
 }

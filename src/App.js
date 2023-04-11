@@ -6,31 +6,54 @@ import React, { useState } from "react";
 //import { useEffect } from "react";
 import { Products } from "./Products";
 import { Categories } from "./Categories";
-import Cart, { viewMode, setViewMode, confimation, setConfirmation } from "./cart";
+import Cart from "./cart";
+import About from "./About";
 
 export const App = (confimation) => {
   console.log("Step 1: After reading file :");
   const [ProductsCategory, setProductsCategory] = useState(Products);
-  const [ProductsCategory2, setProductsCategory2] = useState(Products);
   const [query, setQuery] = useState("");
   const [cart, setCart] = useState(Array(ProductsCategory.length).fill(0)); //Creates an array with the number of categories all filled with 0
   const [isCartVisible, setIsCartVisible] = useState(false);
   const [isCardsVisible, setIsCardsVisible] = useState(true);
   const [showCategories, setShowCategories] = useState("true");
+  const [showAbout, setShowAbout] = useState(false);
+  
 
   const render_products = (ProductsCategory) => {
     return (
-      <div id="browsePage" className="category-section">
+      <div
+        id="browsePage"
+        className="category-section"
+        style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+      >
+                <About
+          isCartVisible={isCartVisible}
+          setIsCartVisible={setIsCartVisible}
+          cart={cart}
+          setCart={setCart}
+          isCardsVisible={isCardsVisible}
+          setIsCardsVisible={setIsCardsVisible}
+          ProductsCategory={ProductsCategory}
+          setProductsCategory={setProductsCategory}
+          showCategories={showCategories}
+          setShowCategories={setShowCategories}
+          showAbout = {showAbout}
+          setShowAbout = {setShowAbout}
+        />
         {console.log("Step 3 : in render_products ")}
         <div className="container">
-         {showCategories == "true" && <h2 className="text-3xl font-extrabold tracking-tight text-gray-600 category-title">
-            Products ({ProductsCategory.length})
-          </h2>}
+          {showCategories == "true" && (
+            <h2 className="text-3xl font-extrabold tracking-tight text-gray-600 category-title">
+              Products ({ProductsCategory.length})
+            </h2>
+          )}
           <div
             onClick={() => {
               setIsCartVisible(!isCartVisible);
               setIsCardsVisible(!isCardsVisible);
-              if(showCategories == "back" || showCategories == "true"){ //When you click the back arrow, it takes you back to a "fresh" screen showing all the products
+              if (showCategories == "back" || showCategories == "true") {
+                //When you click the back arrow, it takes you back to a "fresh" screen showing all the products
                 setProductsCategory(Products);
               }
               isCardsVisible
@@ -52,11 +75,7 @@ export const App = (confimation) => {
                 className="back"
               />
             )}
-            {
-              showCategories == "confirmation" && (
-                ""
-              )}
-            
+            {showCategories == "confirmation" && ""}
           </div>
         </div>
         <Cart
@@ -73,7 +92,6 @@ export const App = (confimation) => {
         />
         <div
           className="m-6 p-3 mt-10 ml-0 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-6 xl:gap-x-10 products-section"
-          style={{ maxHeight: "800px", overflowY: "scroll" }}
         >
           {/* Loop Products */}
           {isCardsVisible &&
@@ -81,7 +99,7 @@ export const App = (confimation) => {
               <div key={index} className="group relative shadow-lg">
                 <div className=" min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-60 lg:aspect-none">
                   <img
-                   style={{ height:"100%" }}
+                    style={{ height: "100%" }}
                     alt="Product"
                     src={product.image}
                     className="w-full h-full object-center object-cover lg:w-full lg:h-full"
@@ -159,14 +177,34 @@ export const App = (confimation) => {
     setProductsCategory(filtered);
   };
 
+  //Causes the footer to appear when you scoll up, and disappear otherwise
+  let prevScrollPos = window.pageYOffset;
+  window.onscroll = function () {
+    let currentScrollPos = window.pageYOffset;
+    let footer = document.querySelector(".footer");
+    if (footer) {
+      if (prevScrollPos > currentScrollPos) {
+        // User is scrolling up, show hidden footer
+        footer.classList.remove("hidden");
+      } else {
+        // User is scrolling down, hide footer
+        footer.classList.add("hidden");
+      }
+    }
+    prevScrollPos = currentScrollPos;
+  };
+
   return (
-    <div className="flex min-h-screen flex-row" style = {{height: "56em"}}>
+    <div className="flex min-h-screen flex-row" style={{ height: "56em" }}>
       {console.log(
         "Step 2 : Return App :",
         Products.length,
         ProductsCategory.length
       )}
-      <div className="h-screen bg-slate-800 p-3 xl:basis-1/5" style = {{height: "100%"}} >
+      <div
+        className="h-screen bg-slate-800 p-3 xl:basis-1/5"
+        style={{ height: "100%" }}
+      >
         <img className="w-full" src={logo} alt="Nordland Forge" />
         <div className="px-6 py-4">
           <h1 className="text-3xl mb-2 font-bold text-white">
@@ -228,6 +266,54 @@ export const App = (confimation) => {
         )}
         {render_products(ProductsCategory)}
       </div>
+
+      <footer className="footer">
+        <div className="foot">
+          <div className="flex-container">
+            <div className="home link">
+              <a href="#top">Back to top</a>
+            </div>
+            <div className="about link">
+              <a href="about.html" onClick={(event) => {
+                event.preventDefault(); 
+                setShowAbout(true);
+                setIsCardsVisible(false);
+                setShowCategories(false);
+                }}>About Us</a>
+            </div>
+            <div className="credits link">
+              <a href="credits.html">Credits</a>
+            </div>
+            <div className="email link">
+              <a href="mailto:carvergfit@gmail.com">
+                <img
+                  src={require("./images/emailBlackAndWhite.png")}
+                  alt="Email"
+                  width="40em"
+                />
+              </a>
+            </div>
+            <div className="insta link">
+              <a href="https://www.instagram.com/nordland_forge/">
+                <img
+                  src={require("./images/instagram.jfif")}
+                  alt="Instagram Logo"
+                  width="40em"
+                />
+              </a>
+            </div>
+            <div className="tiktok link">
+              <a href="https://www.tiktok.com/@nordlandforge?_t=8a7j7ED2n4o&_r=1">
+                <img
+                  src={require("./images/tiktok.png")}
+                  alt="TikTok"
+                  width="40em"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }; //end App

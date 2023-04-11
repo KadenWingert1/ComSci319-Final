@@ -16,7 +16,7 @@ function Cart({
 }) {
   const [cartTotal, setCartTotal] = useState(0);
   const [confirmation, setConfirmation] = useState(null);
-  const [viewMode, setViewMode] = useState("cart"); // Add this line
+  const [viewMode, setViewMode] = useState("cart"); 
 
   useEffect(() => {
     total();
@@ -56,21 +56,6 @@ function Cart({
     setConfirmation(confirmationData);
     setViewMode("confirmation");
     setShowCategories("confirmation");
-  };
-
-  const resetApp = () => {
-
-    console.log("PRODUCT CATEGORY: ", Products.length);
-    const arrayLength = Products.length;
-    const zeros = [];
-    for (let i = 0; i < arrayLength; i++) {
-      zeros.push(0);
-    }
-    setCart(zeros);
-
-    setIsCartVisible(!isCartVisible);
-    setIsCardsVisible(!isCardsVisible);
-    setViewMode("cart"); // Set viewMode to the original state
   };
 
   return (
@@ -251,7 +236,6 @@ function Cart({
 
                 <div class="col-12">
                   <button type="submit" class="btn btn-success">
-                    {" "}
                     <i class="bi-bag-check"></i> Order
                   </button>
                 </div>
