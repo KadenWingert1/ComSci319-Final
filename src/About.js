@@ -7,13 +7,14 @@ function About({
   showAbout,
   setShowAbout,
 }) {
+  
   return (
     <div>
       {showAbout && (
         <main role="main">
           <div className="mainContent">
             <div
-              classNameName="aboutContainer"
+              className="aboutContainer"
               style={{ display: "flex", flexDirection: "row" }}
             >
               <h1
@@ -42,15 +43,13 @@ function About({
             </div>
             <div className="story">
               <div className="p1container">
-                <figure>
-                  <p className="family">
+                <figure className="family">
                     <img
                       src={require("./images/family.png")}
                       alt="Family"
                       width="250em"
                     />
                     <figcaption>So greatful for all of these people</figcaption>
-                  </p>
                 </figure>
 
                 <p id="aboutP">
@@ -65,15 +64,13 @@ function About({
               </div>
 
               <div className="p2container">
-                <figure>
-                  <p className="halloween">
+                <figure className="halloween">
                     <img
                       src={require("./images/halloween.png")}
                       alt="halloween"
                       width="250em"
                     />
                     <figcaption>Halloween is just around the corner</figcaption>
-                  </p>
                 </figure>
 
                 <p id="aboutP">

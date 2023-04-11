@@ -13,6 +13,8 @@ function Cart({
   setProductsCategory,
   ShowCategories,
   setShowCategories,
+  showFooter,
+  setShowFooter
 }) {
   const [cartTotal, setCartTotal] = useState(0);
   const [confirmation, setConfirmation] = useState(null);
@@ -58,12 +60,13 @@ function Cart({
     setShowCategories("confirmation");
   };
 
+
   return (
     <div>
       {isCartVisible && (
         <div className="cart-section">
           {viewMode === "cart" && (
-            <div class="form-wrapper" id="form-wrapper">
+            <div className="form-wrapper" id="form-wrapper">
               <div className="row">
                 <div className="col-2"></div>
                 <div className="col-8">
@@ -117,126 +120,126 @@ function Cart({
               </div>
 
               <form
-                class="row g-3"
+                className="row g-3"
                 id="checkout-form"
                 onSubmit={handleSubmit}
                 noValidate
               >
-                <div class="col-md-6">
-                  <label for="inputName" class="form-label">
+                <div className="col-md-6">
+                  <label htmlFor="inputName" className="form-label">
                     Full Name
                   </label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="inputName"
                     required
                   />
-                  <div class="valid-feedback">Looks good!</div>
-                  <div class="invalid-feedback">Must be like, "John Doe"</div>
+                  <div className="valid-feedback">Looks good!</div>
+                  <div className="invalid-feedback">Must be like, "John Doe"</div>
                 </div>
 
-                <div class="col-md-6">
-                  <label for="inputEmail4" class="form-label">
+                <div className="col-md-6">
+                  <label htmlFor="inputEmail4" className="form-label">
                     Email
                   </label>
                   <input
                     type="email"
-                    class="form-control"
+                    className="form-control"
                     id="inputEmail4"
                     required
                   />
-                  <div class="valid-feedback">Looks good!</div>
-                  <div class="invalid-feedback">
+                  <div className="valid-feedback">Looks good!</div>
+                  <div className="invalid-feedback">
                     Must be like, "abc@xyz.efg"
                   </div>
                 </div>
 
-                <div class="col-12">
-                  <label for="inputCard" class="form-label">
+                <div className="col-12">
+                  <label htmlFor="inputCard" className="form-label">
                     Card
                   </label>
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">
-                      <i class="bi-credit-card-fill"></i>
+                  <div className="input-group mb-3">
+                    <span className="input-group-text" id="basic-addon1">
+                      <i className="bi-credit-card-fill"></i>
                     </span>
                     <input
                       type="text"
                       id="inputCard"
-                      class="form-control"
+                      className="form-control"
                       placeholder="XXXX-XXXX-XXXX-XXXX"
                       aria-label="Username"
                       aria-describedby="basic-addon1"
                       required
                     />
-                    <div class="valid-feedback">Looks good!</div>
-                    <div class="invalid-feedback">
+                    <div className="valid-feedback">Looks good!</div>
+                    <div className="invalid-feedback">
                       Must be like, "7777-7777-7777-7777"
                     </div>
                   </div>
                 </div>
 
-                <div class="col-12">
-                  <label for="inputAddress" class="form-label">
+                <div className="col-12">
+                  <label htmlFor="inputAddress" className="form-label">
                     Address
                   </label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="inputAddress"
                     placeholder="1234 Main St"
                     required
                   />
                 </div>
-                <div class="col-12">
-                  <label for="inputAddress2" class="form-label">
+                <div className="col-12">
+                  <label htmlFor="inputAddress2" className="form-label">
                     Address 2
                   </label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="inputAddress2"
                     placeholder="Apartment, studio, or floor"
                   />
                 </div>
-                <div class="col-md-6">
-                  <label for="inputCity" class="form-label">
+                <div className="col-md-6">
+                  <label htmlFor="inputCity" className="form-label">
                     City
                   </label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="inputCity"
                     required
                   />
                 </div>
-                <div class="col-md-6">
-                  <label for="inputCity" class="form-label">
+                <div className="col-md-6">
+                  <label htmlFor="inputCity" className="form-label">
                     State
                   </label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="inputCity"
                     required
                   />
                 </div>
-                <div class="col-md-2">
-                  <label for="inputZip" class="form-label">
+                <div className="col-md-2">
+                  <label htmlFor="inputZip" className="form-label">
                     Zip
                   </label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="inputZip"
                     required
                   />
                 </div>
-                <div class="col-12"></div>
+                <div className="col-12"></div>
 
-                <div class="col-12">
-                  <button type="submit" class="btn btn-success">
-                    <i class="bi-bag-check"></i> Order
+                <div className="col-12">
+                  <button type="submit" className="btn btn-success" onClick={() =>{setShowFooter(false)}}>
+                    <i className="bi-bag-check"></i> Order
                   </button>
                 </div>
               </form>

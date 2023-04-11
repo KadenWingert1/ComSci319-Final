@@ -9,6 +9,8 @@ import { Categories } from "./Categories";
 import Cart from "./cart";
 import About from "./About";
 import Credits from "./Credits";
+import Footer from "./Footer";
+
 
 export const App = (confimation) => {
   console.log("Step 1: After reading file :");
@@ -18,6 +20,7 @@ export const App = (confimation) => {
   const [isCartVisible, setIsCartVisible] = useState(false); //Items that have been added to your cart
   const [isCardsVisible, setIsCardsVisible] = useState(true); //Initial cards that appear on the screen
   const [showCategories, setShowCategories] = useState("true"); //Filter buttons on the side of the screen
+  const [showFooter, setShowFooter] = useState(true); //Footer doesn't appear on confirmation
   const [showAbout, setShowAbout] = useState(false); //About page
   const [showCredits, setShowCredits] = useState(false); //Credits page
 
@@ -28,20 +31,24 @@ export const App = (confimation) => {
         className="category-section"
         style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
       >
-        <About
-          setIsCartVisible={setIsCartVisible}
-          setIsCardsVisible={setIsCardsVisible}
-          setShowCategories={setShowCategories}
-          showAbout={showAbout}
-          setShowAbout={setShowAbout}
-        />
-        {/* <Credits
-          setIsCartVisible={setIsCartVisible}
-          setIsCardsVisible={setIsCardsVisible}
-          setShowCategories={setShowCategories}
-          showCredits={setShowCredits}
-          setShowCredits={setShowCredits}
-        /> */}
+        {showAbout && (
+          <About
+            setIsCartVisible={setIsCartVisible}
+            setIsCardsVisible={setIsCardsVisible}
+            setShowCategories={setShowCategories}
+            showAbout={showAbout}
+            setShowAbout={setShowAbout}
+          />
+        )}
+        {showCredits && (
+          <Credits
+            setIsCartVisible={setIsCartVisible}
+            setIsCardsVisible={setIsCardsVisible}
+            setShowCategories={setShowCategories}
+            showCredits={setShowCredits}
+            setShowCredits={setShowCredits}
+          />
+        )}
         {console.log("Step 3 : in render_products ")}
         <div className="container">
           {showCategories == "true" && (
@@ -82,6 +89,8 @@ export const App = (confimation) => {
           setProductsCategory={setProductsCategory}
           showCategories={showCategories}
           setShowCategories={setShowCategories}
+          showFooter={showFooter}
+          setShowFooter={setShowFooter}
         />
         <div className="m-6 p-3 mt-10 ml-0 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-6 xl:gap-x-10 products-section">
           {/* Loop Products */}
@@ -168,23 +177,6 @@ export const App = (confimation) => {
     setProductsCategory(filtered);
   };
 
-  //Causes the footer to appear when you scoll up, and disappear otherwise
-  let prevScrollPos = window.pageYOffset;
-  window.onscroll = function () {
-    let currentScrollPos = window.pageYOffset;
-    let footer = document.querySelector(".footer");
-    if (footer) {
-      if (prevScrollPos > currentScrollPos) {
-        // User is scrolling up, show hidden footer
-        footer.classList.remove("hidden");
-      } else {
-        // User is scrolling down, hide footer
-        footer.classList.add("hidden");
-      }
-    }
-    prevScrollPos = currentScrollPos;
-  };
-
   return (
     <div className="flex min-h-screen flex-row" style={{ height: "56em" }}>
       {console.log(
@@ -257,71 +249,17 @@ export const App = (confimation) => {
         )}
         {render_products(ProductsCategory)}
       </div>
-
-      <footer className="footer">
-        <div className="foot">
-          <div className="flex-container">
-            <div className="home link">
-              <a href="#top">Back to top</a>
-            </div>
-            <div className="about link">
-              <a
-                href="about.html"
-                onClick={(event) => {
-                  event.preventDefault();
-                  setShowAbout(true);
-                  setIsCardsVisible(false);
-                  setShowCategories(false);
-                  setIsCartVisible(false);
-                }}
-              >
-                About Us
-              </a>
-            </div>
-            <div className="credits link">
-              <a
-                href="About.html"
-                onClick={(event) => {
-                  event.preventDefault();
-                  setShowCredits(true);
-                  setIsCardsVisible(false);
-                  setShowCategories(false);
-                  setIsCartVisible(false);
-                }}
-              >
-                Credits
-              </a>
-            </div>
-            <div className="email link">
-              <a href="mailto:carvergfit@gmail.com">
-                <img
-                  src={require("./images/emailBlackAndWhite.png")}
-                  alt="Email"
-                  width="40em"
-                />
-              </a>
-            </div>
-            <div className="insta link">
-              <a href="https://www.instagram.com/nordland_forge/">
-                <img
-                  src={require("./images/instagram.jfif")}
-                  alt="Instagram Logo"
-                  width="40em"
-                />
-              </a>
-            </div>
-            <div className="tiktok link">
-              <a href="https://www.tiktok.com/@nordlandforge?_t=8a7j7ED2n4o&_r=1">
-                <img
-                  src={require("./images/tiktok.png")}
-                  alt="TikTok"
-                  width="40em"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {showFooter && (
+          <Footer
+            setIsCartVisible={setIsCartVisible}
+            setIsCardsVisible={setIsCardsVisible}
+            setShowCategories={setShowCategories}
+            setShowAbout = {setShowAbout}
+            setShowCredits = {setShowCredits}
+            showFooter = {showFooter}
+            setShowFooter = {setShowFooter}
+          />
+        )}
     </div>
   );
 }; //end App
