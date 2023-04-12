@@ -16,7 +16,7 @@ function Credits({
             <div className="creditsContent">
               <h1 className="creators">Creators</h1>
               <h2 className="creators2">
-                This website was created as a midterm project for Computer
+                This website was created as a Final project for Computer
                 Science 319 by:
               </h2>
               <br />

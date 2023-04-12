@@ -1,0 +1,7 @@
+{
+    "Blade Style": ["Dagger", "Sword", "Pocket Knife", "Resin Work"],
+    "Steel Type": ["Monosteel", "San Mai", "Damascus"],
+    "Handle Material": ["Stabilized Burl", "Micarta", "Resin Hybrid"],
+    "Handle Style": ["Stabilized Burl", "Micarta", "Resin Hybrid"],
+    "Sheath": ["Leather", "Sword Scabbard", "Kydex"]
+  }

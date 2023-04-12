@@ -14,11 +14,11 @@ function Cart({
   ShowCategories,
   setShowCategories,
   showFooter,
-  setShowFooter
+  setShowFooter,
 }) {
   const [cartTotal, setCartTotal] = useState(0);
   const [confirmation, setConfirmation] = useState(null);
-  const [viewMode, setViewMode] = useState("cart"); 
+  const [viewMode, setViewMode] = useState("cart");
 
   useEffect(() => {
     total();
@@ -60,6 +60,50 @@ function Cart({
     setShowCategories("confirmation");
   };
 
+  function CustomOrderList() {
+    const [customData, setCustomData] = useState(null);
+
+    useEffect(() => {
+      fetch("custom.json")
+        .then((response) => response.json())
+        .then((data) => {
+          setCustomData(data);
+        })
+        .catch((error) => console.error(error));
+    }, []);
+
+    if (!customData) {
+      return <div>Loading...</div>;
+    }
+
+    return (
+      <div id="customOrderR2">
+        {Object.keys(customData).map((key) => {
+          const array = customData[key];
+          return (
+            <div key={key} className="row2 col1">
+              <h1>{key}</h1>
+              {array.map((item) => (
+                <React.Fragment key={item}>
+                  <input
+                    type="radio"
+                    id={item.toLowerCase().replace(" ", "")}
+                    name={key}
+                    value={item}
+                    required
+                  />
+                  <label htmlFor={item.toLowerCase().replace(" ", "")}>
+                    {item}
+                  </label>
+                  <br />
+                </React.Fragment>
+              ))}
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -80,42 +124,79 @@ function Cart({
                         key={index}
                         className="group relative shadow-lg cart-item"
                       >
-              <div className="min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-60 lg:aspect-none">
-                <img
-                  alt="Product"
-                  src={product.image}
-                  className="w-full h-full object-center object-cover lg:w-full lg:h-full"
-                />
-              </div>
-              <div className="flex justify-between p-3">
-                <div>
-                  <h3 className="text-sm text-gray-700">
-                    <a href={product.href}>
-                      <span style={{ fontSize: "16px", fontWeight: "600" }}>
-                        {product.title}
-                      </span>
-                    </a>
-                    <p className="text-sm font-medium text-green-600">
-                      ${product.price}
-                    </p>
-                    Category: {product.category}
-                  </h3>
-                  <p className="mt-1 text-sm text-gray-500">
-                    Rating:
-                    {product.rating.rate}
-                  </p>
-                  <p>Cart: {cart[product.id - 1]}</p>
-                </div>
-              </div>
-
-
-
+                        <div className="min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-60 lg:aspect-none">
+                          <img
+                            alt="Product"
+                            src={product.image}
+                            className="w-full h-full object-center object-cover lg:w-full lg:h-full"
+                          />
+                        </div>
+                        <div className="flex justify-between p-3">
+                          <div>
+                            <h3 className="text-sm text-gray-700">
+                              <a href={product.href}>
+                                <span
+                                  style={{
+                                    fontSize: "16px",
+                                    fontWeight: "600",
+                                  }}
+                                >
+                                  {product.title}
+                                </span>
+                              </a>
+                              <p className="text-sm font-medium text-green-600">
+                                ${product.price}
+                              </p>
+                              Category: {product.category}
+                            </h3>
+                            <p className="mt-1 text-sm text-gray-500">
+                              Rating:
+                              {product.rating.rate}
+                            </p>
+                            <p>Cart: {cart[product.id - 1]}</p>
+                          </div>
+                        </div>
                       </div>
                     ))}
                   </div>
+
+
+
+
+                  <div class="formContainer">
+                    <form action="" class="form">
+                      <h1>Custom Orders</h1>
+                      {CustomOrderList}
+                      <br />
+                      <div class="col-50">
+                        <p>Size (in inches)</p>
+                        <label for="name">Length</label>
+                        <input type="text" id="length" name="size" required />
+                        <label for="name">Width</label>
+                        <input type="text" id="length" name="size" required />
+                        <label for="name">Thickness</label>
+                        <input
+                          type="text"
+                          id="thickness"
+                          name="size"
+                          required
+                        />
+                      </div>
+                      <br />
+                    </form>
+                  </div>
+
+
+
+
+
+
+
+
+
+
                   <h1>Payment Information</h1>
                   <div id="liveAlertPlaceholder"></div>
-                  
                 </div>
               </div>
 
@@ -136,7 +217,9 @@ function Cart({
                     required
                   />
                   <div className="valid-feedback">Looks good!</div>
-                  <div className="invalid-feedback">Must be like, "John Doe"</div>
+                  <div className="invalid-feedback">
+                    Must be like, "John Doe"
+                  </div>
                 </div>
 
                 <div className="col-md-6">
@@ -238,7 +321,13 @@ function Cart({
                 <div className="col-12"></div>
 
                 <div className="col-12">
-                  <button type="submit" className="btn btn-success" onClick={() =>{setShowFooter(false)}}>
+                  <button
+                    type="submit"
+                    className="btn btn-success"
+                    onClick={() => {
+                      setShowFooter(false);
+                    }}
+                  >
                     <i className="bi-bag-check"></i> Order
                   </button>
                 </div>
@@ -273,13 +362,18 @@ function Cart({
                   </li>
                 ))}
               </ul>
-              <p style={{ fontSize: "1.25rem", fontWeight: "600" }}>Total: ${cartTotal.toFixed(2)}</p>
+              <p style={{ fontSize: "1.25rem", fontWeight: "600" }}>
+                Total: ${cartTotal.toFixed(2)}
+              </p>
               <hr />
               <p>
                 A confirmation email has been sent to{" "}
                 <strong>{confirmation.email}</strong>.
               </p>
-              <button className="btn btn-primary" onClick={() => window.location.reload()}>
+              <button
+                className="btn btn-primary"
+                onClick={() => window.location.reload()}
+              >
                 Continue Shopping
               </button>
             </div>
