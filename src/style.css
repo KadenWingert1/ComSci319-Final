@@ -143,6 +143,49 @@ figure {
   padding: 0.25em;
 }
 
+/*These are for the cart form*/
+.viewCart {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  padding-left: 18rem;
+}
+.customOrders {
+  font-weight: 600;
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.formCustomSize {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+#customOrderR2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+.customDimensions {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.dimension {
+  margin-bottom: 2rem;
+}
+.dimension input[type="text"] {
+  width: 0px;
+  height: 10px;
+}
+.radioh1 {
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+/*Last of the cart form*/
 
 .motto {
   font-family: "Anton", sans-serif;
@@ -275,10 +318,6 @@ main {
 }
 /*Last of credits page*/
 
-.viewCart {
-  font-size: 2rem;
-  font-weight: 700;
-}
 /*Add/sub button's */
 .addsub {
   background-color: rgb(176, 136, 83);

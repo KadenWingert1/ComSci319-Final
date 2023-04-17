@@ -28,9 +28,14 @@ function Credits({
                 Bryce Maloy (
                 <a href="mailto:bsmaloy@iastate.edu">
                   bsmaloy@iastate.edu
-                </a>) <br />
-                <br />
-                2/25/2023
+                </a>{" "})
+                4/17/2023
+                <br/>
+                <br/>
+                Professor: Dr. Abraham N. Aldaco Gastelum (
+                <a href="aaldaco@IASTATE.EDU">
+                aaldaco@IASTATE.EDU
+                </a>)
               </h3>
             </div>
             <button

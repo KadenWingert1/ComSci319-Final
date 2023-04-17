@@ -20,10 +20,10 @@ export const App = (confimation) => {
   const [isCartVisible, setIsCartVisible] = useState(false); //Items that have been added to your cart
   const [isCardsVisible, setIsCardsVisible] = useState(true); //Initial cards that appear on the screen
   const [showCategories, setShowCategories] = useState("true"); //Filter buttons on the side of the screen
+  const [showCustomForm, setCustomForm] = useState(false);
   const [showFooter, setShowFooter] = useState(true); //Footer doesn't appear on confirmation
   const [showAbout, setShowAbout] = useState(false); //About page
   const [showCredits, setShowCredits] = useState(false); //Credits page
-
 
 
   const render_products = (ProductsCategory) => {
@@ -93,6 +93,8 @@ export const App = (confimation) => {
           setShowCategories={setShowCategories}
           showFooter={showFooter}
           setShowFooter={setShowFooter}
+          showCustomForm = {showCustomForm}
+          setCustomForm = {setCustomForm}
         />
         <div className="m-6 p-3 mt-10 ml-0 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-6 xl:gap-x-10 products-section">
           {/* Loop Products */}
@@ -131,6 +133,9 @@ export const App = (confimation) => {
                           const newState = [...cart];
                           newState[product.id - 1] += 1;
                           setCart(newState);
+                          if (index === ProductsCategory.length - 1) {
+                            setCustomForm(true);
+                          }
                           console.log("ADD BUTTON:" + cart);
                         }}
                       >
@@ -143,6 +148,9 @@ export const App = (confimation) => {
                           if (newState[product.id - 1] > 0) {
                             newState[product.id - 1] -= 1;
                             setCart(newState);
+                            if (index === ProductsCategory.length - 1 && newState[ProductsCategory.length - 1] == 0) {
+                              setCustomForm(false);
+                            }
                             console.log("SUB BUTTON:" + cart);
                           }
                         }}

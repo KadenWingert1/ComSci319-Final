@@ -15,6 +15,8 @@ function Cart({
   setShowCategories,
   showFooter,
   setShowFooter,
+  showCustomForm,
+  setCustomForm
 }) {
   const [cartTotal, setCartTotal] = useState(0);
   const [confirmation, setConfirmation] = useState(null);
@@ -60,51 +62,6 @@ function Cart({
     setShowCategories("confirmation");
   };
 
-  function CustomOrderList() {
-    const [customData, setCustomData] = useState(null);
-
-    useEffect(() => {
-      fetch("custom.json")
-        .then((response) => response.json())
-        .then((data) => {
-          setCustomData(data);
-        })
-        .catch((error) => console.error(error));
-    }, []);
-
-    if (!customData) {
-      return <div>Loading...</div>;
-    }
-
-    return (
-      <div id="customOrderR2">
-        {Object.keys(customData).map((key) => {
-          const array = customData[key];
-          return (
-            <div key={key} className="row2 col1">
-              <h1>{key}</h1>
-              {array.map((item) => (
-                <React.Fragment key={item}>
-                  <input
-                    type="radio"
-                    id={item.toLowerCase().replace(" ", "")}
-                    name={key}
-                    value={item}
-                    required
-                  />
-                  <label htmlFor={item.toLowerCase().replace(" ", "")}>
-                    {item}
-                  </label>
-                  <br />
-                </React.Fragment>
-              ))}
-            </div>
-          );
-        })}
-      </div>
-    );
-  }
-
   return (
     <div>
       {isCartVisible && (
@@ -112,7 +69,6 @@ function Cart({
           {viewMode === "cart" && (
             <div className="form-wrapper" id="form-wrapper">
               <div className="row">
-                <div className="col-2"></div>
                 <div className="col-8">
                   <h1 className="viewCart">View Your Cart</h1>
                   <div className="cartItems">
@@ -159,41 +115,160 @@ function Cart({
                       </div>
                     ))}
                   </div>
+                  {showCustomForm && (
+                  <div className="formContainer">
+                    <form action="" className="form">
+                      <h1 className="customOrders">Custom Orders</h1>
+
+                      <div id="customOrderR2">
+                        <div className="bladeStyle">
+                          <h1 className = "radioh1">Blade Style</h1>
+                          <input
+                            type="radio"
+                            id="dagger"
+                            name="bladeStyle"
+                            value="dagger"
+                            
+                          />
+                          <label htmlFor="dagger">Dagger</label>
+                          <br />
+
+                          <input
+                            type="radio"
+                            id="sword"
+                            name="bladeStyle"
+                            value="sword"
+                          />
+                          <label htmlFor="sword">Sword</label>
+                          <br />
+
+                          <input
+                            type="radio"
+                            id="pocket"
+                            name="bladeStyle"
+                            value="pocket"
+                          />
+                          <label htmlFor="pocket">Pocket Knife</label>
+                          <br />
+                        </div>
 
 
 
+                        <div className="steelType">
+                          <h1 className = "radioh1" >Steel Type</h1>
+                          <input
+                            type="radio"
+                            id="mono"
+                            name="steel"
+                            value="mono"
+                            required
+                          />
+                          <label htmlFor="mono">Monosteel</label>
+                          <br />
 
-                  <div class="formContainer">
-                    <form action="" class="form">
-                      <h1>Custom Orders</h1>
-                      {CustomOrderList}
+                          <input
+                            type="radio"
+                            id="mai"
+                            name="steel"
+                            value="mai"
+                          />
+                          <label htmlFor="mai">San Mai</label>
+                          <br />
+
+                          <input
+                            type="radio"
+                            id="damascus"
+                            name="steel"
+                            value="damascus"
+                          />
+                          <label htmlFor="damascus">Damascus</label>
+                          <br />
+                        </div>
+
+                        <div className="handleMaterial">
+                          <h1 className = "radioh1" >Handle Material</h1>
+                          <input
+                            type="radio"
+                            id="burl"
+                            name="handle"
+                            value="burl"
+                            required
+                          />
+                          <label htmlFor="burl">Stabilized Burl</label>
+                          <br />
+
+                          <input
+                            type="radio"
+                            id="micarta"
+                            name="handle"
+                            value="micarta"
+                          />
+                          <label htmlFor="micarta">Micarta</label>
+                          <br />
+
+                          <input
+                            type="radio"
+                            id="hybrid"
+                            name="handle"
+                            value="hybrid"
+                          />
+                          <label htmlFor="hybrid">Resin Hybrid</label>
+                          <br />
+                        </div>
+
+                        <div className="sheath">
+                          <h1 className = "radioh1">Sheath</h1>
+                          <input
+                            type="radio"
+                            id="leather"
+                            name="sheath"
+                            value="leather"
+                            required
+                          />
+                          <label htmlFor="leather">Leather</label>
+                          <br />
+
+                          <input
+                            type="radio"
+                            id="scabbard"
+                            name="sheath"
+                            value="scabbard"
+                          />
+                          <label htmlFor="scabbard">Sword Scabbard</label>
+                          <br />
+
+                          <input
+                            type="radio"
+                            id="kydex"
+                            name="sheath"
+                            value="kydex"
+                          />
+                          <label htmlFor="kydex">Kydex</label>
+                          <br />
+                        </div>
+                      </div>
+
                       <br />
-                      <div class="col-50">
-                        <p>Size (in inches)</p>
-                        <label for="name">Length</label>
-                        <input type="text" id="length" name="size" required />
-                        <label for="name">Width</label>
-                        <input type="text" id="length" name="size" required />
-                        <label for="name">Thickness</label>
-                        <input
-                          type="text"
-                          id="thickness"
-                          name="size"
-                          required
-                        />
+                      <p className="formCustomSize">
+                        Blade Size (in inches)</p>
+                      <div className="customDimensions">
+                        <div>
+                        <label htmlFor="length dimension">Length</label>
+                        <input type="text" className = "dimension" id="length" name="length" required />
+                        </div>
+                        <div>
+                        <label htmlFor="width dimension">Width</label>
+                        <input type="text" className = "dimension" id="width" name="width" required />
+                        </div>
+                        <div>
+                        <label htmlFor="thicknes dimension">Thickness</label>
+                        <input type="text" className = "dimension" id="thickness" name="thickness" required/>
+                        </div>
                       </div>
                       <br />
                     </form>
                   </div>
-
-
-
-
-
-
-
-
-
+                  )}
 
                   <h1>Payment Information</h1>
                   <div id="liveAlertPlaceholder"></div>
