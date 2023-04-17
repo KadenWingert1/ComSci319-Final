@@ -11,34 +11,7 @@ import About from "./About";
 import Credits from "./Credits";
 import Footer from "./Footer";
 import LeftPanel from "./LeftPanel";
-
-
-// const mysql = require('mysql');
-
-// const connection = mysql.createConnection({
-//   host: 'localhost',
-//   user: 'root',
-//   password: 'password',
-//   database: 'mydatabase'
-// });
-
-// connection.connect();
-
-// Products.forEach((product) => {
-//   const query = `
-//     INSERT INTO products (id, title, price, description, category, image, rating, rating_count) 
-//     VALUES (${product.id}, "${product.title}", ${product.price}, "${product.description}", "${product.category}", "${product.image}", ${product.rating.rate}, ${product.rating.count})
-//   `;
-//   connection.query(query, (error, results, fields) => {
-//     if (error) {
-//       console.log(error);
-//     }
-//   });
-// });
-
-// connection.end();
-
-
+import db from './db';
 
 
 export const App = (confimation) => {
