@@ -4,19 +4,11 @@ import { useState, useEffect } from "react";
 
 function Cart({
   isCartVisible,
-  setIsCartVisible,
   cart,
-  setCart,
-  isCardsVisible,
-  setIsCardsVisible,
   ProductsCategory,
-  setProductsCategory,
-  ShowCategories,
   setShowCategories,
-  showFooter,
   setShowFooter,
   showCustomForm,
-  setCustomForm
 }) {
   const [cartTotal, setCartTotal] = useState(0);
   const [confirmation, setConfirmation] = useState(null);

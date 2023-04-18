@@ -1,6 +1,5 @@
 import "./App.css";
 import "./style.css";
-import logo from "./images/logo.png";
 
 import React, { useState } from "react";
 //import { useEffect } from "react";
@@ -85,19 +84,11 @@ export const App = (confimation) => {
         </div>
        { <Cart
           isCartVisible={isCartVisible}
-          setIsCartVisible={setIsCartVisible}
           cart={cart}
-          setCart={setCart}
-          isCardsVisible={isCardsVisible}
-          setIsCardsVisible={setIsCardsVisible}
           ProductsCategory={ProductsCategory}
-          setProductsCategory={setProductsCategory}
-          showCategories={showCategories}
           setShowCategories={setShowCategories}
-          showFooter={showFooter}
           setShowFooter={setShowFooter}
           showCustomForm = {showCustomForm}
-          setCustomForm = {setCustomForm}
         />}
         {console.log("IS CART VISABLE: ", isCartVisible)}
         {(
@@ -122,11 +113,6 @@ export const App = (confimation) => {
       )}
         {(
           <LeftPanel
-            setIsCartVisible={setIsCartVisible}
-            setIsCardsVisible={setIsCardsVisible}
-            setShowCategories={setShowCategories}
-            showCredits={setShowCredits}
-            setShowCredits={setShowCredits}
             showCategories={showCategories}
             query = {query}
             setQuery = {setQuery}
@@ -152,7 +138,6 @@ export const App = (confimation) => {
           setShowCredits={setShowCredits}
           showFooter={showFooter}
           setShowFooter={setShowFooter}
-          showCategories = {showCategories}
 
         />
       }

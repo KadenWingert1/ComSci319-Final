@@ -4,11 +4,6 @@ import { Products } from "./Products";
 import { Categories } from "./Categories";
 
 function LeftPanel({
-  setIsCartVisible,
-  setIsCardsVisible,
-  setShowCategories,
-  showCredits,
-  setShowCredits,
   showCategories,
   query,
   setQuery,

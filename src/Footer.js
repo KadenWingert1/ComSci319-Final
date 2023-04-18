@@ -6,8 +6,7 @@ function Footer({
   setShowCategories,
   setShowAbout,
   setShowCredits,
-  showFooter,
-  setShowFooter,
+  showFooter
 }) {
   //Causes the footer to appear when you scoll up, and disappear otherwise
   let prevScrollPos = window.pageYOffset;
