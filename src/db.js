@@ -1,25 +1,25 @@
-const mysql = require('mysql');
+// const mysql = require('mysql');
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'password',
-  database: 'Comsci319-Final'
-});
+// const connection = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: 'password',
+//   database: 'Comsci319-Final'
+// });
 
-connection.connect();
+// connection.connect();
 
-Products.forEach((product) => {
-  const query = `
-    INSERT INTO products (id, title, price, description, category, image, rating, rating_count) 
-    VALUES (${product.id}, "${product.title}", ${product.price}, "${product.description}", "${product.category}", "${product.image}", ${product.rating.rate}, ${product.rating.count})
-  `;
-  connection.query(query, (error, results, fields) => {
-    if (error) {
-      console.log(error);
-    }
-  });
-});
+// Products.forEach((product) => {
+//   const query = `
+//     INSERT INTO products (id, title, price, description, category, image, rating, rating_count) 
+//     VALUES (${product.id}, "${product.title}", ${product.price}, "${product.description}", "${product.category}", "${product.image}", ${product.rating.rate}, ${product.rating.count})
+//   `;
+//   connection.query(query, (error, results, fields) => {
+//     if (error) {
+//       console.log(error);
+//     }
+//   });
+// });
 
 
 
@@ -35,4 +35,4 @@ Products.forEach((product) => {
 //   }
   
 
-connection.end();
+// connection.end();
