@@ -16,7 +16,7 @@ function Credits({
             <div className="creditsContent">
               <h1 className="creators">Creators</h1>
               <h2 className="creators2">
-                This website was created as a Final project for Computer
+                This website was created as a Final project using react for the front end, and mongodb for the backend. It consists of a catalog of knives that a small business owner makes. This website was developed as a final project for Computer
                 Science 319 by:
               </h2>
               <br />

@@ -11,7 +11,6 @@ import Credits from "./Credits";
 import Footer from "./Footer";
 import LeftPanel from "./LeftPanel";
 import Browse from "./browseProducts";
-import db from './db';
 
 
 export const App = (confimation) => {
