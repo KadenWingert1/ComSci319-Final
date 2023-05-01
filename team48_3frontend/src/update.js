@@ -125,7 +125,7 @@ function Update({
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    width: "80%",
+                    width: "100%",
                   }}
                 >
                   <h1 className="oneProduct">Enter new Price:</h1>
@@ -142,7 +142,7 @@ function Update({
                       className="btn btn-md btn-primary"
                       type="button"
                       id="button-addon2"
-                      style = {{marginLeft:"-5px", borderTopLeftRadius:"0px",borderBottomLeftRadius:"0px"}}
+                      style = {{marginLeft:"-2px", borderTopLeftRadius:"0px",borderBottomLeftRadius:"0px"}}
                       onClick={(e) => {
                         console.log(
                           "Element's ID: ",

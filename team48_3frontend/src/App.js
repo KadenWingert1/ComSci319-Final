@@ -33,11 +33,7 @@ export const App = () => {
 
   const render_products = () => {
     return (
-      <div
-        id="browsePage"
-        className="category-section"
-        style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
-      >
+      <>
         {showAbout && (
           <About
             showAbout={showAbout}
@@ -118,7 +114,7 @@ export const App = () => {
           setViewer2 = {setViewer2}
           />
         }
-      </div>
+      </>
     );
   };
 
