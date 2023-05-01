@@ -110,26 +110,12 @@ export const App = () => {
         }
         {
           <Update
-            showAllView={showAllView}
-            setShowAllView={setShowAllView}
-            showAddView={showAddView}
-            setShowAddView={setShowAddView}
-            showRemoveView={showRemoveView}
-            setShowRemoveView={setShowRemoveView}
-            showUpdateView={showUpdateView}
-            setShowUpdateView={setShowUpdateView}
-            isCrudVisable={isCrudVisable}
-            setIsCrudVisable={setIsCrudVisable}
-            isCrudBackVisable={isCrudBackVisable}
-            setCrudBackVisable={setCrudBackVisable}
-            product={product}
-            setProduct={setProduct}
-            viewer1={viewer1}
-            setViewer1={setViewer1}
-            oneProduct={oneProduct}
-            setOneProduct={setOneProduct}
-            viewer2={viewer2}
-            setViewer2={setViewer2}
+          showUpdateView = {showUpdateView}
+          isCrudBackVisable = {isCrudBackVisable}
+          oneProduct = {oneProduct}
+          setOneProduct = {setOneProduct}
+          viewer2 = {viewer2}
+          setViewer2 = {setViewer2}
           />
         }
       </div>
