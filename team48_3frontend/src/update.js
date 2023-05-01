@@ -28,19 +28,27 @@ function Update({
     }
   }
   async function updatePrice(id) {
-    if(id === ""){ 
+    if (id === "") {
       alert("Must have a valid ID in the input");
       return;
-     }
-    const newPrice = Math.abs(parseFloat(document.getElementById("newPrice").value));
-    console.log("IN UPDATE PRICE, Element's ID: ", document.getElementById("message").value);
-    console.log("IN UPDATE PRICE, New price: ", document.getElementById("newPrice").value);
+    }
+    const newPrice = Math.abs(
+      parseFloat(document.getElementById("newPrice").value)
+    );
+    console.log(
+      "IN UPDATE PRICE, Element's ID: ",
+      document.getElementById("message").value
+    );
+    console.log(
+      "IN UPDATE PRICE, New price: ",
+      document.getElementById("newPrice").value
+    );
     setShouldRefresh(true);
-    await fetch('http://localhost:4000/update/' + id, {
+    await fetch("http://localhost:4000/update/" + id, {
       method: "PUT",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ 
-        price: newPrice
+      body: JSON.stringify({
+        price: newPrice,
       }),
     })
       .then((response) => {
@@ -65,8 +73,6 @@ function Update({
         });
       });
   }
-  
-  
 
   const showOneItem = oneProduct.map((el) => (
     <div key={el._id} className="col-sm-12 col-md-6 col-lg-4 mb-4">
@@ -87,7 +93,8 @@ function Update({
           className="viewAllProducts crud container-fluid p-5"
           style={{ backgroundColor: "burlywood" }}
         >
-          <h1 className="catalogOfProducts">Catalog of Products </h1>
+          <h1 className="h1">Catalog of Products </h1>
+          <br />
           <div className="oneProductContainer">
             <h1 className="oneProduct">Show one Product by Id:</h1>
             <div className="input-group mb-3">
@@ -100,7 +107,7 @@ function Update({
                 onChange={(e) => getOneProduct(e.target.value)}
               />
               <button
-                className="btn btn-outline-secondary"
+                className="btn btn-sm btn-primary"
                 type="button"
                 id="button-addon2"
                 onClick={() =>
@@ -112,28 +119,42 @@ function Update({
             </div>
 
             {viewer2 && <div className="row products">{showOneItem}</div>}
-            <br />
             {viewer2 && (
               <div className="input-group mb-3">
-                <h1 className="oneProduct">Enter new Price:</h1>
-                <input
-                  type="text"
-                  id="newPrice"
-                  name="message"
-                  placeholder="new price"
-                  className="form-control"
-                />
-                <button
-                  className="btn btn-outline-secondary"
-                  type="button"
-                  id="button-addon2"
-                  onClick={(e) => {
-                    console.log("Element's ID: ", document.getElementById("message").value);
-                    updatePrice(document.getElementById("message").value);
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "80%",
                   }}
                 >
-                  Update
-                </button>
+                  <h1 className="oneProduct">Enter new Price:</h1>
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <input
+                      type="text"
+                      id="newPrice"
+                      name="message"
+                      placeholder="new price"
+                      className="form-control"
+                      style={{ width: "100%" }}
+                    />
+                    <button
+                      className="btn btn-md btn-primary"
+                      type="button"
+                      id="button-addon2"
+                      style = {{marginLeft:"-5px", borderTopLeftRadius:"0px",borderBottomLeftRadius:"0px"}}
+                      onClick={(e) => {
+                        console.log(
+                          "Element's ID: ",
+                          document.getElementById("message").value
+                        );
+                        updatePrice(document.getElementById("message").value);
+                      }}
+                    >
+                      Update
+                    </button>
+                  </div>
+                </div>
               </div>
             )}
           </div>

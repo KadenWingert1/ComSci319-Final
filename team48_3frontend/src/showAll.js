@@ -52,6 +52,7 @@ function ShowAll({
   const showAllItems = product.map((el) => (
     <div key={el._id} className="col-sm-12 col-md-6 col-lg-4 mb-4">
       <img src={el.image} width={150} className="img-fluid img-thumbnail"/> <br />
+      <span className="fw-bold">Id:</span> {el._id} <br />
       <span className="fw-bold">Title:</span> {el.title} <br />
       <span className="fw-bold">Category:</span> {el.category} <br />
       <span className="fw-bold">Price:</span> ${el.price} <br />
@@ -62,6 +63,7 @@ function ShowAll({
   const showOneItem = oneProduct.map((el) => (
     <div key={el._id} className="col-sm-12 col-md-6 col-lg-4 mb-4">
       <img src={el.image} width={150} className="img-fluid img-thumbnail" /> <br />
+      <span className="fw-bold">Id:</span> {el._id} <br />
       <span className="fw-bold">Title:</span> {el.title} <br />
       <span className="fw-bold">Category:</span> {el.category} <br />
       <span className="fw-bold">Price:</span> ${el.price} <br />

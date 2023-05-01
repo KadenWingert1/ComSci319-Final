@@ -67,6 +67,12 @@ html {
   width: 5rem;
   margin-right: 10rem;
 }
+.oneProduct {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
 
 /* These are for the footer */
 .footer {
@@ -79,6 +85,7 @@ html {
   background-color: burlywood;
   transform: translateY(0);
   border-top: 2px solid black;
+  z-index: 100;
 }
 
 .footer.hidden {
