@@ -28,23 +28,23 @@ function Add({ showAddView, isCrudBackVisable }) {
   };
 
   const [addNewProduct, setAddNewProduct] = useState({
-    _id: null,
+    _id: "",
     title: "",
-    price: null,
+    price: "",
     description: "",
     category: "",
     image: "",
-    rating: { rate: null, count: null },
+    rating: { rate: "", count: "" },
   });
 
   function handleChange(evt) {
     const value = evt.target.value;
     if (evt.target.name === "_id") {
-      setAddNewProduct({ ...addNewProduct, _id: parseInt(Math.max(0, value)) });
+      setAddNewProduct({ ...addNewProduct, _id: parseInt(Math.abs(value)) });
     } else if (evt.target.name === "title") {
       setAddNewProduct({ ...addNewProduct, title: value });
     } else if (evt.target.name === "price") {
-      setAddNewProduct({ ...addNewProduct, price: Math.max(0, value) });
+      setAddNewProduct({ ...addNewProduct, price: Math.abs(value) });
     } else if (evt.target.name === "description") {
       setAddNewProduct({ ...addNewProduct, description: value });
     } else if (evt.target.name === "category") {
@@ -55,13 +55,13 @@ function Add({ showAddView, isCrudBackVisable }) {
     } else if (evt.target.name === "rate") {
       setAddNewProduct({
         ...addNewProduct,
-        rating: { rate: Math.max(0, value) },
+        rating: { rate: Math.abs(value) },
       });
     } else if (evt.target.name === "count") {
       const temp = addNewProduct.rating.rate;
       setAddNewProduct({
         ...addNewProduct,
-        rating: { rate: temp, count: Math.max(0, value) },
+        rating: { rate: temp, count: Math.abs(value) },
       });
     }
   }

@@ -28,7 +28,7 @@ function Update({
     }
   }
   async function updatePrice(id) {
-    const newPrice = parseFloat(document.getElementById("newPrice").value);
+    const newPrice = Math.abs(parseFloat(document.getElementById("newPrice").value));
     console.log("IN UPDATE PRICE, Element's ID: ", document.getElementById("message").value);
     console.log("IN UPDATE PRICE, New price: ", document.getElementById("newPrice").value);
     setShouldRefresh(true);
