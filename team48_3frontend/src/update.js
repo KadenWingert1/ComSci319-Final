@@ -28,6 +28,10 @@ function Update({
     }
   }
   async function updatePrice(id) {
+    if(id === ""){ 
+      alert("Must have a valid ID in the input");
+      return;
+     }
     const newPrice = Math.abs(parseFloat(document.getElementById("newPrice").value));
     console.log("IN UPDATE PRICE, Element's ID: ", document.getElementById("message").value);
     console.log("IN UPDATE PRICE, New price: ", document.getElementById("newPrice").value);
