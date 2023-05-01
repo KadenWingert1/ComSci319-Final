@@ -1,9 +1,6 @@
 import React from "react";
 
 function Footer({
-  setIsCartVisible,
-  setIsCardsVisible,
-  setShowCategories,
   setShowAbout,
   setShowCredits,
   showFooter
@@ -40,9 +37,6 @@ function Footer({
                   onClick={(event) => {
                     event.preventDefault();
                     setShowAbout(true);
-                    setIsCardsVisible(false);
-                    setShowCategories(false);
-                    setIsCartVisible(false);
                     setShowCredits(false);
                   }}
                 >
@@ -55,9 +49,6 @@ function Footer({
                   onClick={(event) => {
                     event.preventDefault();
                     setShowCredits(true);
-                    setIsCardsVisible(false);
-                    setShowCategories(false);
-                    setIsCartVisible(false);
                     setShowAbout(false);
                   }}
                 >

@@ -1,18 +1,13 @@
 import React from "react";
 
-function About({
-  setIsCartVisible,
-  showAbout,
-  setShowAbout,
-  isCrudVisable,
-  setIsCrudVisable
-}) {
-  setIsCrudVisable(false);
-  return (
+function About({ showAbout, setShowAbout, setIsCrudVisable }) {
 
+  setIsCrudVisable(false);
+  
+  return (
     <div className="aboutPage">
       {showAbout && (
-<div>
+        <div>
           <div
             className="aboutContainer"
             style={{
@@ -38,7 +33,6 @@ function About({
               className="aboutBack"
               onClick={(event) => {
                 setShowAbout(false);
-                setIsCartVisible(false);
                 setIsCrudVisable(true);
               }}
             >

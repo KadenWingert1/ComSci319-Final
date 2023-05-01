@@ -1,17 +1,12 @@
 import React from "react";
-import { Products } from "./Products";
 
 function Crud({
   isCrudVisable,
   setIsCrudVisable,
   setShowAllView,
-  showAddView,
   setShowAddView,
-  showRemoveView,
   setShowRemoveView,
-  showUpdateView,
   setShowUpdateView,
-  isCrudBackVisable,
   setCrudBackVisable,
 }) {
   return (

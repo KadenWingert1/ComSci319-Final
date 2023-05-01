@@ -1,9 +1,7 @@
 import React from "react";
 
 function Credits({
-  setIsCartVisible,
   setShowCredits,
-  isCrudVisable,
   setIsCrudVisable
 }) {
 
@@ -40,9 +38,8 @@ function Credits({
             </div>
             <button
               className="creditsBack"
-              onClick={(event) => {
+              onClick={() => {
                 setShowCredits(false);
-                setIsCartVisible(false);
                 setIsCrudVisable(true);
               }}
             >
